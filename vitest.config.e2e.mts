@@ -1,6 +1,5 @@
 import swc from 'unplugin-swc';
 import { defineConfig } from 'vitest/config';
-import tsConfigPaths from 'vite-tsconfig-paths';
 import { resolve } from 'node:path';
 
 export default defineConfig({
@@ -11,14 +10,15 @@ export default defineConfig({
     setupFiles: ['./test/setup-e2e.ts'],
   },
   plugins: [
-    tsConfigPaths(),
     swc.vite({
       module: { type: 'es6' },
     }),
   ],
   resolve: {
     alias: {
+      '@': resolve(__dirname, './src'),
       src: resolve(__dirname, './src'),
+      generated: resolve(__dirname, './generated'),
     },
   },
 });
