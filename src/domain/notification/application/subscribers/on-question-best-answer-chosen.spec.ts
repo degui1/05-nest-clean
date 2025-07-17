@@ -45,7 +45,10 @@ describe('On question best answer chosen', () => {
 
     sendNotificationExecuteSpy = vi.spyOn(sendNotificationUseCase, 'execute');
 
-    new OnQuestionBestAnswerChosen(inMemoryAnswersRepository, sendNotificationUseCase) // eslint-disable-line
+    new OnQuestionBestAnswerChosen(
+      inMemoryAnswersRepository,
+      sendNotificationUseCase,
+    );
   });
 
   it('should send a notification when the question has a new best answer', async () => {
