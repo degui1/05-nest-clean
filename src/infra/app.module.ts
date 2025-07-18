@@ -3,9 +3,6 @@ import { ConfigModule } from '@nestjs/config';
 
 import { AuthModule } from './auth/auth.module';
 import { envSchema } from './env';
-import { CreateAccountController } from './http/controllers/create-account.controller';
-import { AuthenticateController } from './http/controllers/authenticate.controller';
-import { CreateQuestionController } from './http/controllers/create-question.controller';
 import { HttpModule } from './http/http.module';
 
 @Module({
@@ -16,11 +13,6 @@ import { HttpModule } from './http/http.module';
     }),
     AuthModule,
     HttpModule,
-  ],
-  controllers: [
-    CreateAccountController,
-    AuthenticateController,
-    CreateQuestionController,
   ],
 })
 export class AppModule {}
