@@ -15,7 +15,7 @@ import { CreateQuestionUseCase } from '@/domain/forum/application/use-cases/crea
 
 const createQuestionBodySchema = z.object({
   title: z.string(),
-  content: z.string().email(),
+  content: z.string(),
 });
 
 type CreateQuestionBodySchema = z.infer<typeof createQuestionBodySchema>;
