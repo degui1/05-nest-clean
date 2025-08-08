@@ -1,9 +1,28 @@
-import { Attachment as PrismaAttachment } from 'generated/prisma';
+import { Prisma, Attachment as PrismaAttachment } from 'generated/prisma';
 
 import { UniqueEntityID } from '@/core/entities/unique-entity-id';
 import { AnswerAttachment } from '@/domain/forum/enterprise/entities/answer-attachment';
 
 export class PrismaAnswerAttachmentMapper {
+  static toPrismaUpdateMany(
+    attachments: AnswerAttachment[],
+  ): Prisma.AttachmentUpdateManyArgs {
+    const attachmentIds = attachments.map((attachment) => {
+      return attachment.attachmentId.toString();
+    });
+
+    return {
+      where: {
+        id: {
+          in: attachmentIds,
+        },
+      },
+      data: {
+        answerId: attachments[0].answerId.toString(),
+      },
+    };
+  }
+
   static toDomain(raw: PrismaAttachment): AnswerAttachment {
     if (!raw.answerId) {
       throw new Error('Invalid attachment type.');

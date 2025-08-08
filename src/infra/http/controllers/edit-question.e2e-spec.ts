@@ -5,10 +5,12 @@ import request from 'supertest';
 
 import { AppModule } from '@/infra/app.module';
 import { DatabaseModule } from '@/infra/database/database.module';
+import { PrismaService } from '@/infra/database/prisma/prisma.service';
 
 import { StudentFactory } from 'test/factories/make-student';
-import { PrismaService } from '@/infra/database/prisma/prisma.service';
 import { QuestionFactory } from 'test/factories/make-questions';
+import { AttachmentFactory } from 'test/factories/make-attachment';
+import { QuestionAttachmentFactory } from 'test/factories/make-question-attachment';
 
 describe('Edit question (E2E)', () => {
   let app: INestApplication;
@@ -85,7 +87,7 @@ describe('Edit question (E2E)', () => {
     expect(questionDatabase).toBeTruthy();
     const attachmentsOnDatabase = await prisma.attachment.findMany({
       where: {
-        questionId: questionOnDatabase?.id,
+        questionId: questionDatabase?.id,
       },
     });
 
