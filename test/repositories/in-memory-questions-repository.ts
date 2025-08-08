@@ -52,7 +52,7 @@ export class InMemoryQuestionsRepository implements QuestionsRepository {
       question.attachments.getNewItems(),
     );
 
-    await this.questionAttachmentsRepository.createMany(
+    await this.questionAttachmentsRepository.deleteMany(
       question.attachments.getRemovedItems(),
     );
 
