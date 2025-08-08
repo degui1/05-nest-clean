@@ -9,7 +9,7 @@ import {
 import { GetQuestionBySlugUseCase } from '@/domain/forum/application/use-cases/get-question-by-slug';
 import { JwtAuthGuard } from '@/infra/auth/jwt-auth.guard';
 
-import { QuestionPresenter } from '../presenters/question-presenter';
+import { QuestionDetailsPresenter } from '../presenters/question-details-presenter';
 
 @Controller('/questions/:slug')
 @UseGuards(JwtAuthGuard)
@@ -27,7 +27,7 @@ export class GetQuestionBySlugController {
     }
 
     return {
-      question: QuestionPresenter.toHTTP(result.value.question),
+      question: QuestionDetailsPresenter.toHTTP(result.value.question),
     };
   }
 }

@@ -1,18 +1,18 @@
-import { Prisma } from 'generated/prisma';
+import { Prisma, Attachment as PrismaAttachment } from 'generated/prisma';
 
 import { Attachment } from '@/domain/forum/enterprise/entities/attachment';
+import { UniqueEntityID } from '@/core/entities/unique-entity-id';
 
 export class PrismaAttachmentMapper {
-  // static toDomain(raw: PrismaUser): Attachment {
-  //   return Attachment.create(
-  //     {
-  //       name: raw.name,
-  //       email: raw.email,
-  //       password: raw.password,
-  //     },
-  //     new UniqueEntityID(raw.id),
-  //   );
-  // }
+  static toDomain(raw: PrismaAttachment): Attachment {
+    return Attachment.create(
+      {
+        title: raw.title,
+        url: raw.url,
+      },
+      new UniqueEntityID(raw.id),
+    );
+  }
 
   static toPrisma(
     attachment: Attachment,
