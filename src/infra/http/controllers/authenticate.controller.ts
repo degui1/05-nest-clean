@@ -42,9 +42,9 @@ export class AuthenticateController {
 
       switch (error.constructor) {
         case WrongCredentialsError:
-          throw new UnauthorizedException();
+          throw new UnauthorizedException(error.message);
         default:
-          throw new BadRequestException();
+          throw new BadRequestException(error.message);
       }
     }
 

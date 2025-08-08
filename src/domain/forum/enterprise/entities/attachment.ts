@@ -3,15 +3,15 @@ import { UniqueEntityID } from '@/core/entities/unique-entity-id';
 
 interface AttachmentProps {
   title: string;
-  link: string;
+  url: string;
 }
 
 export class Attachment extends Entity<AttachmentProps> {
   get title() {
-    return this.props.link;
+    return this.props.url;
   }
 
-  get link() {
+  get url() {
     return this.props.title;
   }
 
